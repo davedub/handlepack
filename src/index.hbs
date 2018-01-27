@@ -8,7 +8,10 @@
 
 <body>
     {{> components/nav}}
-    <p>Whatever this is whatever this is not.</p>
+    <p>Whatever this is and whatever this is not.</p>
+		 <p>{{salutation}}</p>
+		 <p>{{whisper 'Modified By The Whisper Helper, So ALL LOWER CASE.'}}</p>
+		 <p>The number <strong>{{randomnum}}</strong> has been randomly generated, using the randomNumber helper. 
     {{> components/footer}}
 
 </body>
