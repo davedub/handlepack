@@ -7,12 +7,11 @@
   <body>
 
 <body>
-    {{> components/nav}}
+    {{> partials/nav}}
     <p>Whatever this is and whatever this is not.</p>
-		 <p>{{salutation}}</p>
-     <p>{{whisper 'THIS IS LOVE'}}</p>
-		 <p>The random number generator generated {{randomnum}}.</p> 
-    {{> components/footer}}
+		 <p>{{> helpers/salutation}}</p>
+     	 <p>The random number generator generated {{> helpers/randomnum}}.</p> 
+    {{> partials/footer}}
 
 </body>
 
