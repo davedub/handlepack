@@ -1,6 +1,8 @@
 # handlepack
 
-An attempt to get [handlebars](http://handlebarsjs.com) template loader for [webpack](https://github.com/webpack/webpack) working. Good on partials, not good on helpers.
+An attempt to get [handlebars](http://handlebarsjs.com) template loader for [webpack](https://github.com/webpack/webpack) working. Good on partials, not good on helpers. 
+
+Also loading pre-compiled Sass and PostCSS styles (that works OK).
 
 ## Installation
 
