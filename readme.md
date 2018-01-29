@@ -1,6 +1,6 @@
 # handlepack
 
-An attempt to get [handlebars](http://handlebarsjs.com) template loader for [webpack](https://github.com/webpack/webpack). working.
+An attempt to get [handlebars](http://handlebarsjs.com) template loader for [webpack](https://github.com/webpack/webpack) working. Good on partials, not good on helpers.
 
 ## Installation
 
