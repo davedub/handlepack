@@ -24,20 +24,25 @@ module.exports = {
                     loader: 'handlebars-loader',
                     options: {
                         compat: true,
+                        helperDirs: path.join(__dirname, 'src', 'helpers'),
                         partialDirs: [
                             path.join(__dirname, 'src', 'partials')
                         ],
                         knownHelpersOnly: false,
-                        knownHelpers: [
-                            'salutation',
-                            'randomnum'
-                        ],
                         runtimePath: 'handlebars/runtime'
                     }
                 }]
             }
             ]
         },
+
+    resolve: {
+        alias: {
+            'handlebars/runtime': 'handlebars/dist/cjs/handlebars.runtime',
+            'handlebars': 'handlebars/dist/cjs/handlebars.runtime',
+            [require.resolve('handlebars/dist/cjs/handlebars.runtime')]: 'handlebars/dist/cjs/handlebars.runtime'
+        }
+    },
     plugins: [
         new HtmlWebpackPlugin({
           title: 'Webpack2 Tutorial',
