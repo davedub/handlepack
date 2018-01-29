@@ -20,16 +20,27 @@ module.exports = {
             },
             {
             test: /\.hbs$/, 
-            use: 'handlebars-loader'
+            use: [{
+                    loader: 'handlebars-loader',
+                    options: {
+                        compat: true,
+                        partialDirs: [
+                            path.join(__dirname, 'src', 'partials')
+                        ],
+                        knownHelpersOnly: false,
+                        knownHelpers: [
+                            'salutation',
+                            'randomnum'
+                        ],
+                        runtimePath: 'handlebars/runtime'
+                    }
+                }]
             }
             ]
         },
     plugins: [
         new HtmlWebpackPlugin({
           title: 'Webpack2 Tutorial',
-          minify: {
-              collapseWhitespace: true
-          },
           hash: true,
           template: './src/index.hbs', // Load a custom template (lodash by default see the FAQ for details)
         }),

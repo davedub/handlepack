@@ -7,12 +7,15 @@
   <body>
 
 <body>
-    {{> partials/nav}}
+  {{> partials/nav}}
+    <p>{{helpers/salutation}}</p>
     <p>Whatever this is and whatever this is not.</p>
-		 <p>{{> helpers/salutation}}</p>
-     	 <p>The random number generator generated {{> helpers/randomnum}}.</p> 
-    {{> partials/footer}}
+    <p>The random number generator generated is: {{helpers/randomnum}}.</p> 
+  {{> partials/footer}}
 
 </body>
-
+<script type="text/javascript">
+    hbs.registerHelper('salutation', attr => new hbs.SafeString(salutationAttribute(attr)));
+    hbs.registerHelper('randomnum', attr => new hbs.SafeString(randomnumAttribute(attr)));
+</script>
 </html>
