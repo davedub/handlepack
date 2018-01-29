@@ -12,4 +12,4 @@ Also loading pre-compiled Sass and PostCSS styles (that works OK).
 
 `npm run dev`
 
-No web server hooked up to this, just checking to see how CSS (PostCSS and Sass) and JS is pre-compiled in Webpack, using [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin) and [Handlebars-Loader](https://github.com/pcardune/handlebars-loader).
+No web server hooked up to this, just checking to see how CSS (PostCSS and Sass) and JS get pre-compiled via Webpack, using [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin) and [Handlebars-Loader](https://github.com/pcardune/handlebars-loader).
