@@ -1,8 +1,6 @@
 # handlepack
 
-An attempt to get [handlebars](http://handlebarsjs.com) template loader for [webpack](https://github.com/webpack/webpack) working. Partials working with double brackets and a > sign. Helpers working with just double brackets. 
-
-Also loading pre-compiled Sass and PostCSS styles (that works OK).
+An attempt to get [handlebars](http://handlebarsjs.com) template loader for [webpack](https://github.com/webpack/webpack) working. Partials working with {{> pathTo/partial }}. Helpers working with just {{ pathTo/helper }}. Also loading pre-compiled Sass and PostCSS styles.
 
 ## Installation
 
@@ -12,4 +10,4 @@ Also loading pre-compiled Sass and PostCSS styles (that works OK).
 
 `npm run dev`
 
-No web server hooked up to this, just checking to see how CSS (PostCSS and Sass) and JS get pre-compiled via Webpack, using [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin) and [Handlebars-Loader](https://github.com/pcardune/handlebars-loader).
+No web server hooked up to this, just checking to see how CSS (PostCSS and Sass) and JS get pre-compiled via Webpack, using [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin) and [handlebars-loader](https://github.com/pcardune/handlebars-loader).
