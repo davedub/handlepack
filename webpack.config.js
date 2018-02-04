@@ -5,7 +5,7 @@ const path = require("path");
 module.exports = {
     entry: './src/app.js',
     output: {
-        path: __dirname + '/dist',
+        path: path.resolve(__dirname, 'dist'),
         filename: 'app.bundle.js'
     },
     module: {
@@ -35,12 +35,17 @@ module.exports = {
             }
             ]
         },
-
+    devServer: {
+        contentBase: path.join(__dirname, "dist"),
+        compress: true,
+        stats: "errors-only",
+        open: true
+    },
     resolve: {
         alias: {
-            'handlebars/runtime': 'handlebars/dist/cjs/handlebars.runtime',
-            'handlebars': 'handlebars/dist/cjs/handlebars.runtime',
-            [require.resolve('handlebars/dist/cjs/handlebars.runtime')]: 'handlebars/dist/cjs/handlebars.runtime'
+            'handlebars/runtime': path.resolve(__dirname, 'node_modules/handlebars/dist/cjs/handlebars.runtime'),
+            'handlebars': path.resolve(__dirname, 'node_modules/handlebars/dist/cjs/handlebars.runtime'),
+            [path.resolve(__dirname, 'node_modules/handlebars/dist/cjs/handlebars.runtime')]: 'node_modules/handlebars/dist/cjs/handlebars.runtime'
         }
     },
     plugins: [
