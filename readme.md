@@ -4,7 +4,7 @@ This project tracks the [ihatetomatoes YouTube videos](https://www.youtube.com/c
 
 The [handlebars](http://handlebarsjs.com) loader for [webpack](https://github.com/webpack/webpack) requires some aliasing in its webpack config file. Partials are {{> pathTo/partial }}. Helpers are {{ pathTo/helper }}. But there is a ReferenceError in the Javascript console of "cant find variable: hbs". 
 
-Routing to other pages (helpers, about) is not yet working. That will come once React and Babel are added, which is the next step.
+React and Babel have been added but routing to other pages is not yet set up. 
 
 ## Installation
 
