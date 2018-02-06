@@ -19,6 +19,11 @@ module.exports = {
             use: ExtractTextPlugin.extract([ 'css-loader', 'sass-loader'])
             },
             {
+            test: /\.js$/, 
+            exclude: path.resolve(__dirname, 'node_modules'),
+            use: 'babel-loader'
+            },
+            {
             test: /\.hbs$/, 
             use: [{
                     loader: 'handlebars-loader',
