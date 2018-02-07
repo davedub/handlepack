@@ -1,10 +1,12 @@
 # handlepack
 
-This project tracks the [ihatetomatoes YouTube videos](https://www.youtube.com/channel/UC7O6CntQoAI-wYyJxYiqNUg) for a Webpack 2 setup and configuration. PostCSS, Sass and Handlebars get pre-compiled via Webpack, using [extract-text-webpack-plugin](https://www.npmjs.com/package/extract-text-webpack-plugin), [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin) and [handlebars-loader](https://github.com/pcardune/handlebars-loader).
+Tracking the [YouTube videos]((https://www.youtube.com/playlist?list=PLkEZWD8wbltnRp6nRR8kv97RbpcUdNawY) by Petr Tichy, a/k/a [ihatetomatoes](https://ihatetomatoes.net/), for a Webpack 2 setup and configuration. So far, through Lesson 7. The last revisions add a chunks property to `webpack.config.js` which need to fine tuned so that style (as opposed to script) assets are not exclued.
 
-The [handlebars](http://handlebarsjs.com) loader for [webpack](https://github.com/webpack/webpack) requires some aliasing in its webpack config file. Partials are {{> pathTo/partial }}. Helpers are {{ pathTo/helper }}. But there is a ReferenceError in the Javascript console of "cant find variable: hbs". 
+There are some variations to what Petr covers. E.g., PostCSS, Sass and Handlebars get pre-compiled using [extract-text-webpack-plugin](https://www.npmjs.com/package/extract-text-webpack-plugin), [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin) and [handlebars-loader](https://github.com/pcardune/handlebars-loader).
 
-React and Babel have been added but routing to other pages is not yet set up. 
+The [handlebars](http://handlebarsjs.com) loader for [webpack](https://github.com/webpack/webpack) requires aliasing. Partials are {{> pathTo/partial }}. Helpers are {{ pathTo/helper }}. But there is a ReferenceError in the Javascript console of "cant find variable: hbs". Also see [this issue](https://github.com/pcardune/handlebars-loader/issues/118) on making sure that the knownHelpersOnly property of handlebars-loader, which defaults to true, is set to false.
+
+React and Babel are added. Multi-templating is set up but not routing. 
 
 ## Installation
 
@@ -16,4 +18,4 @@ React and Babel have been added but routing to other pages is not yet set up.
 
 ## Compile the project without running localhost
 
-Webpack dev server (as opposed to the Webpack module itself) serves files out of memory rather than writing them to disk. To see the files that are written by Webpack, change the script for "dev" in package.json to `webpack -d` from `webpack-dev-server`.  Then try running `npm run dev` again.
+Webpack dev server (as opposed to the Webpack module itself) serves files out of memory rather than writing them to disk. To see the files as saved to disk by Webpack, change the script for "dev" in package.json to `webpack -d` from `webpack-dev-server`.  Then try running `npm run dev` again. As now configured, the "prod" script does the same thing.
