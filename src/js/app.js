@@ -1,8 +1,8 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 
-const scss = require('./styles/app.scss');
-const css = require('./styles/styles.sss');
+const scss = require('./../styles/app.scss');
+const css = require('./../styles/styles.sss');
 
 console.log("Hello from app.js and webpack dev server!!");
 

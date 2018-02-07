@@ -3,10 +3,13 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const path = require("path");
 
 module.exports = {
-    entry: './src/app.js',
+    entry: {
+        app: './src/js/app.js',
+        contact: './src/js/contact.js'
+},
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'app.bundle.js'
+        filename: '[name].bundle.js'
     },
     module: {
         rules: [
@@ -55,10 +58,21 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-          title: 'Webpack2 Tutorial',
-          hash: true,
+          title: 'Webpack2 Tutorial', // names the output ..?
+          // minify: {
+              // collapseWhitespace: true
+          // },
+          hash: true, // creates a hash for every generated file
+          excludeChunks: ['contact'],
           template: './src/index.hbs', // Load a custom template (lodash by default see the FAQ for details)
         }),
+        new HtmlWebpackPlugin({
+            title: 'Contact_page', // names the output ..?
+            hash: true, // creates a hash for every generated file
+         //   chunks: ['contact'],
+            filename: 'contact.html',
+            template: './src/contact.hbs', 
+          }),    
         new ExtractTextPlugin("app.css")
       ]
 }
