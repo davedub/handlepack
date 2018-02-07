@@ -1,6 +1,6 @@
 # handlepack
 
-Tracking the [YouTube videos]((https://www.youtube.com/playlist?list=PLkEZWD8wbltnRp6nRR8kv97RbpcUdNawY) by Petr Tichy, a/k/a [ihatetomatoes](https://ihatetomatoes.net/), for a Webpack 2 setup and configuration. So far, through Lesson 7. The last revisions add a chunks property to `webpack.config.js` which need to fine tuned so that style (as opposed to script) assets are not exclued.
+Tracking the [YouTube videos](https://www.youtube.com/playlist?list=PLkEZWD8wbltnRp6nRR8kv97RbpcUdNawY) by Petr Tichy, a/k/a [ihatetomatoes](https://ihatetomatoes.net/), for a Webpack 2 setup and configuration. So far, through Lesson 7. The last revisions add a chunks property to `webpack.config.js` which need to fine tuned so that style (as opposed to script) assets are not exclued.
 
 There are some variations to what Petr covers. E.g., PostCSS, Sass and Handlebars get pre-compiled using [extract-text-webpack-plugin](https://www.npmjs.com/package/extract-text-webpack-plugin), [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin) and [handlebars-loader](https://github.com/pcardune/handlebars-loader).
 
