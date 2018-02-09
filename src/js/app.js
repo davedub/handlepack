@@ -5,6 +5,7 @@ const scss = require('./../styles/app.scss');
 const css = require('./../styles/styles.sss');
 
 console.log("Hello from app.js and webpack dev server!!");
+console.log(this.loaders);
 
 ReactDOM.render(
     <h1>Hello, world!</h1>,

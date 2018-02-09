@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 const path = require("path");
 
 module.exports = {
@@ -25,6 +26,11 @@ module.exports = {
             test: /\.js$/, 
             exclude: path.resolve(__dirname, 'node_modules'),
             use: 'babel-loader'
+            },
+            {
+            test: /\.pug$/, 
+            exclude: path.resolve(__dirname, 'node_modules'),
+            use: ['html-loader', 'pug-html-loader']
             },
             {
             test: /\.hbs$/, 
@@ -64,7 +70,7 @@ module.exports = {
           // },
           hash: true, // creates a hash for every generated file
           excludeChunks: ['contact'],
-          template: './src/index.hbs', // Load a custom template (lodash by default see the FAQ for details)
+          template: './src/index.pug', // Load a custom template (lodash by default see the FAQ for details)
         }),
         new HtmlWebpackPlugin({
             title: 'Contact_page', // names the output ..?
