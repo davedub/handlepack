@@ -18,10 +18,10 @@ The [handlebars](http://handlebarsjs.com) loader for [webpack](https://github.co
 
 Webpack dev server (as opposed to the Webpack module itself) serves files out of memory rather than writing them to disk. To see the files as saved to disk by Webpack, change the script for "dev" in package.json to `webpack -d` from `webpack-dev-server`.  Then try running `npm run dev` again. As now configured, the "prod" script does the same thing.
 
-###Still to do
+### Still to do
 
 >A chunks property has been added to `webpack.config.js` but needs fine tuning so that style (as opposed to script) assets are not exclued.
 
 >Multi-templating is set up (adding ) but not routing.
 
->Handlebars is not used in this version (replaced with .pug) templates but need to see if they can co-exist. The old hbs template entry point is renamed `index_hbs.hbs.`
+>Handlebars is not used on the new "pug" branch (replaced with .pug) templates but I need to see if they can co-exist. In the "pug" branch, the old hbs template entry point is renamed `index_hbs.hbs.`
