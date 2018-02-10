@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-
+const webpack = require('webpack');
 const path = require("path");
 
 module.exports = {
@@ -16,11 +16,11 @@ module.exports = {
         rules: [
             {
             test: /\.sss$/,
-            use: ExtractTextPlugin.extract([ 'css-loader', 'postcss-loader' ])
+            use: ([ 'style-loader', 'css-loader', 'postcss-loader' ])
             },
             {
             test: /\.scss$/, 
-            use: ExtractTextPlugin.extract([ 'css-loader', 'sass-loader'])
+            use: ([ 'style-loader', 'css-loader', 'sass-loader'])
             },
             {
             test: /\.js$/, 
@@ -52,6 +52,7 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, "dist"),
         compress: true,
+        hot: true,
         stats: "errors-only",
         open: true
     },
@@ -79,6 +80,14 @@ module.exports = {
             filename: 'contact.html',
             template: './src/contact.hbs', 
           }),    
-        new ExtractTextPlugin("app.css")
+        new ExtractTextPlugin({
+            filename: "app.css",
+            disable: true,
+            allChunks: true
+        }),
+        new webpack.NamedModulesPlugin(),
+          // prints more readable module names in the browser console on HMR update
+        new webpack.HotModuleReplacementPlugin()
+          // enabme HMR globally
       ]
 }
