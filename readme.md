@@ -14,7 +14,7 @@ The [handlebars](http://handlebarsjs.com) loader for [webpack](https://github.co
 
 `npm run dev`
 
-## Compile, don't run
+## Output, don't run
 
 Webpack dev server (as opposed to the Webpack module itself) serves files out of memory rather than writing them to disk. To see the files as saved to disk by Webpack, change the script for "dev" in package.json to `webpack -d` from `webpack-dev-server`.  Then try running `npm run dev` again. As now configured, the "prod" script does the same thing.
 
