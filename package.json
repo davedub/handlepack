@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack-dev-server",
     "clean": "rimraf ./dist/*",
-    "prod": "npm run clean && webpack -p"
+    "prod": "npm run clean && NODE_ENV=production webpack -p"
   },
   "author": "",
   "license": "ISC",

@@ -3,6 +3,17 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const webpack = require('webpack');
 const path = require("path");
 
+const isProd = process.env.NODE_ENV === 'production' // true or false
+const cssDev = ['sass-loader', 'postcss-loader', 'style-loader', 'css-loader' ];
+const cssProd = ExtractTextPlugin({
+    fallback: 'style-loader',
+    loader: [ 'postcss-loader', 'sass-loader', 'css-loader' ],
+    allChunks: true,
+    publicPath: '/dist'
+});
+
+const cssConfig = isProd ? cssProd : cssDev;
+
 module.exports = {
     entry: {
         app: './src/js/app.js',
@@ -16,11 +27,11 @@ module.exports = {
         rules: [
             {
             test: /\.sss$/,
-            use: ([ 'style-loader', 'css-loader', 'postcss-loader' ])
+            use: cssConfig
             },
             {
             test: /\.scss$/, 
-            use: ([ 'style-loader', 'css-loader', 'sass-loader'])
+            use: cssConfig
             },
             {
             test: /\.js$/, 
@@ -82,7 +93,7 @@ module.exports = {
           }),    
         new ExtractTextPlugin({
             filename: "app.css",
-            disable: true,
+            disable: !isProd,
             allChunks: true
         }),
         new webpack.NamedModulesPlugin(),
