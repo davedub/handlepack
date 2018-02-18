@@ -16,11 +16,17 @@ module.exports = {
         rules: [
             {
             test: /\.sss$/,
-            use: ([ 'style-loader', 'css-loader', 'postcss-loader' ])
+            use: ExtractTextPlugin.extract({
+                fallback: 'style-loader',
+                use: 'postcss-loader'
+                })
             },
             {
             test: /\.scss$/, 
-            use: ([ 'style-loader', 'css-loader', 'sass-loader'])
+            use: ExtractTextPlugin.extract({
+                fallback: 'style-loader',
+                use: 'css-loader'
+                })
             },
             {
             test: /\.js$/, 
@@ -81,13 +87,14 @@ module.exports = {
             template: './src/contact.hbs', 
           }),    
         new ExtractTextPlugin({
-            filename: "app.css",
-            disable: true,
+            filename: 'app.css',
+            disable: false,
+            // ignoreOrder: true,
             allChunks: true
         }),
         new webpack.NamedModulesPlugin(),
           // prints more readable module names in the browser console on HMR update
         new webpack.HotModuleReplacementPlugin()
-          // enabme HMR globally
+          // enable HMR globally
       ]
 }
