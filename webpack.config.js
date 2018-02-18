@@ -27,11 +27,25 @@ module.exports = {
         rules: [
             {
             test: /\.sss$/,
+<<<<<<< HEAD
             use: cssConfig
             },
             {
             test: /\.scss$/, 
             use: cssConfig
+=======
+            use: ExtractTextPlugin.extract({
+                fallback: 'style-loader',
+                use: 'postcss-loader'
+                })
+            },
+            {
+            test: /\.scss$/, 
+            use: ExtractTextPlugin.extract({
+                fallback: 'style-loader',
+                use: 'css-loader'
+                })
+>>>>>>> hotmodule
             },
             {
             test: /\.js$/, 
@@ -92,13 +106,19 @@ module.exports = {
             template: './src/contact.hbs', 
           }),    
         new ExtractTextPlugin({
+<<<<<<< HEAD
             filename: "app.css",
             disable: !isProd,
+=======
+            filename: 'app.css',
+            disable: false,
+            // ignoreOrder: true,
+>>>>>>> hotmodule
             allChunks: true
         }),
         new webpack.NamedModulesPlugin(),
           // prints more readable module names in the browser console on HMR update
         new webpack.HotModuleReplacementPlugin()
-          // enabme HMR globally
+          // enable HMR globally
       ]
 }
