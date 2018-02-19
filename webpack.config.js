@@ -2,27 +2,26 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const isProd = process.env.NODE_ENV === 'production' // true or false
 
-var extractSSS = new ExtractTextPlugin({
-    filename: 'css/styles.css',
-    disable: false
-});
+var cssDev1 = ['style-loader', 'css-loader', 'postcss-loader'];
+var cssDev2 = ['style-loader', 'css-loader', 'sass-loader'];
 
-var extractSCSS = new ExtractTextPlugin({
-    filename: 'css/app.css',
-    disable: false
-});
+const extractProd1 = new ExtractTextPlugin('css/styles.css');
+const extractProd2 = new ExtractTextPlugin('css/app.css');
 
 const webpack = require('webpack');
 const path = require("path");
 
-const cssDev = ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader'] 
-const cssProd = ExtractTextPlugin.extract({
-    use: [ 'css-loader', 'sass-loader', 'postcss-loader' ],
+const cssProd1 = extractProd1.extract({
     fallback: 'style-loader',
+    use: [ 'css-loader', 'postcss-loader' ],
     publicPath: '/dist'
     });
-
-const cssConfig = isProd ? cssProd : cssDev;
+const cssProd2 = extractProd2.extract({
+    fallback: 'style-loader',
+    use: [ 'css-loader', 'sass-loader' ],
+    publicPath: '/dist'
+    });
+const cssConfig = isProd ? [cssProd1, cssProd2] : [cssDev1, cssDev2];
 
 module.exports = {
     entry: {
@@ -37,11 +36,11 @@ module.exports = {
         rules: [
             {
             test: /\.sss$/,
-            use: extractSSS.extract([ 'css-loader', 'postcss-loader' ])
+            use: isProd ? cssProd1 : cssDev1
             },
             {
             test: /\.scss$/, 
-            use: extractSCSS.extract([ 'css-loader', 'sass-loader' ])
+            use: isProd ? cssProd2 : cssDev2
             },
             {
             test: /\.js$/, 
@@ -101,8 +100,8 @@ module.exports = {
             filename: 'contact.html',
             template: './src/contact.hbs', 
           }),    
-        extractSSS,
-        extractSCSS,
+        extractProd1,
+        extractProd2,
         new webpack.NamedModulesPlugin(),
           // prints more readable module names in the browser console on HMR update
         new webpack.HotModuleReplacementPlugin()
