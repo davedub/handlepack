@@ -4,15 +4,17 @@ const webpack = require('webpack');
 const path = require("path");
 
 const isProd = process.env.NODE_ENV === 'production' // true or false
-const cssDev = ['sass-loader', 'postcss-loader', 'style-loader', 'css-loader' ];
-const cssProd = ExtractTextPlugin({
+const sssDev = ['style-loader', 'css-loader', 'postcss-loader'];
+const scssDev = ['style-loader', 'css-loader', 'sass-loader'];
+const cssProd = [ExtractTextPlugin.extract({
     fallback: 'style-loader',
-    loader: [ 'postcss-loader', 'sass-loader', 'css-loader' ],
+    use: [ 'css-loader', 'sass-loader' ],
     allChunks: true,
     publicPath: '/dist'
-});
+}),
+];
 
-const cssConfig = isProd ? cssProd : cssDev;
+const cssConfig = isProd ? cssProd : [scssDev, sssDev];
 
 module.exports = {
     entry: {
@@ -27,25 +29,11 @@ module.exports = {
         rules: [
             {
             test: /\.sss$/,
-<<<<<<< HEAD
-            use: cssConfig
+            use: sssDev
             },
             {
             test: /\.scss$/, 
-            use: cssConfig
-=======
-            use: ExtractTextPlugin.extract({
-                fallback: 'style-loader',
-                use: 'postcss-loader'
-                })
-            },
-            {
-            test: /\.scss$/, 
-            use: ExtractTextPlugin.extract({
-                fallback: 'style-loader',
-                use: 'css-loader'
-                })
->>>>>>> hotmodule
+            use: scssDev
             },
             {
             test: /\.js$/, 
@@ -106,14 +94,8 @@ module.exports = {
             template: './src/contact.hbs', 
           }),    
         new ExtractTextPlugin({
-<<<<<<< HEAD
             filename: "app.css",
             disable: !isProd,
-=======
-            filename: 'app.css',
-            disable: false,
-            // ignoreOrder: true,
->>>>>>> hotmodule
             allChunks: true
         }),
         new webpack.NamedModulesPlugin(),
