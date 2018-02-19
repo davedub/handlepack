@@ -1,23 +1,28 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const isProd = process.env.NODE_ENV === 'production' // true or false
 
-const extractSSS = new ExtractTextPlugin('/stylesheets/styles.css');
-const extractSCSS = new ExtractTextPlugin('/stylesheets/app.css');
+var extractSSS = new ExtractTextPlugin({
+    filename: 'css/styles.css',
+    disable: false
+});
+
+var extractSCSS = new ExtractTextPlugin({
+    filename: 'css/app.css',
+    disable: false
+});
 
 const webpack = require('webpack');
 const path = require("path");
 
-const isProd = process.env.NODE_ENV === 'prod' // true or false
-const sssDev = ['style-loader', 'css-loader', 'postcss-loader'];
-const scssDev = ['style-loader', 'css-loader', 'sass-loader'];
+const cssDev = ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader'] 
 const cssProd = ExtractTextPlugin.extract({
     use: [ 'css-loader', 'sass-loader', 'postcss-loader' ],
     fallback: 'style-loader',
     publicPath: '/dist'
     });
 
-const cssConfig = isProd ? cssProd : [scssDev, sssDev];
+const cssConfig = isProd ? cssProd : cssDev;
 
 module.exports = {
     entry: {
