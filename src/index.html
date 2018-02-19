@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <p>Content goes here.</p>
+    <!--<img src="./images/IndySoccerCrest.jpg" /> This does not work with webpack. -->
+    <img src=<%= require('./images/subFolder/IndySoccerCrest.jpg') %>  />
+    <img src=<%= require('./images/IndySoccerCrest.jpg') %> />
+  </body>

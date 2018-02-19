@@ -53,6 +53,10 @@ module.exports = {
             use: ['html-loader', 'pug-html-loader']
             },
             {
+            test: /\.(png|jpe?g|gif|svg)$/,
+            use: 'file-loader?name=[hash:12].[ext]&outputPath=images/'
+            },
+            {
             test: /\.hbs$/, 
             use: [{
                     loader: 'handlebars-loader',
@@ -91,7 +95,7 @@ module.exports = {
           // },
           hash: true, // creates a hash for every generated file
           excludeChunks: ['contact'],
-          template: './src/index.pug', // Load a custom template (lodash by default see the FAQ for details)
+          template: './src/index.html', // Load a custom template (lodash by default see the FAQ for details)
         }),
         new HtmlWebpackPlugin({
             title: 'Contact_page', // names the output ..?
