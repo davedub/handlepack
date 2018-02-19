@@ -1,18 +1,21 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+const extractSSS = new ExtractTextPlugin('/stylesheets/styles.css');
+const extractSCSS = new ExtractTextPlugin('/stylesheets/app.css');
+
 const webpack = require('webpack');
 const path = require("path");
 
-const isProd = process.env.NODE_ENV === 'production' // true or false
+const isProd = process.env.NODE_ENV === 'prod' // true or false
 const sssDev = ['style-loader', 'css-loader', 'postcss-loader'];
 const scssDev = ['style-loader', 'css-loader', 'sass-loader'];
-const cssProd = [ExtractTextPlugin.extract({
+const cssProd = ExtractTextPlugin.extract({
+    use: [ 'css-loader', 'sass-loader', 'postcss-loader' ],
     fallback: 'style-loader',
-    use: [ 'css-loader', 'sass-loader' ],
-    allChunks: true,
     publicPath: '/dist'
-}),
-];
+    });
 
 const cssConfig = isProd ? cssProd : [scssDev, sssDev];
 
@@ -29,11 +32,11 @@ module.exports = {
         rules: [
             {
             test: /\.sss$/,
-            use: sssDev
+            use: extractSSS.extract([ 'css-loader', 'postcss-loader' ])
             },
             {
             test: /\.scss$/, 
-            use: scssDev
+            use: extractSCSS.extract([ 'css-loader', 'sass-loader' ])
             },
             {
             test: /\.js$/, 
@@ -64,7 +67,7 @@ module.exports = {
         },
     devServer: {
         contentBase: path.join(__dirname, "dist"),
-        compress: true,
+        compress: false,
         hot: true,
         stats: "errors-only",
         open: true
@@ -93,11 +96,8 @@ module.exports = {
             filename: 'contact.html',
             template: './src/contact.hbs', 
           }),    
-        new ExtractTextPlugin({
-            filename: "app.css",
-            disable: !isProd,
-            allChunks: true
-        }),
+        extractSSS,
+        extractSCSS,
         new webpack.NamedModulesPlugin(),
           // prints more readable module names in the browser console on HMR update
         new webpack.HotModuleReplacementPlugin()
