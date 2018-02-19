@@ -15,7 +15,3 @@ React and Babel are added. Multi-templating is set up but not routing.
 ## Run
 
 `npm run dev`
-
-## Output
-
->Handlebars is not used on the new "pug" branch (replaced with .pug) templates but I need to see if they can co-exist. In the "pug" branch, the old hbs template entry point is renamed `index_hbs.hbs.`
