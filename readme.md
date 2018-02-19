@@ -1,6 +1,6 @@
 # handlepack
 
-Tracking [YouTube videos](https://www.youtube.com/playlist?list=PLkEZWD8wbltnRp6nRR8kv97RbpcUdNawY) by Petr Tichy, a/k/a [ihatetomatoes](https://ihatetomatoes.net/), for Webpack 2 setup and configuration, through Video 9. 
+Tracking [YouTube videos](https://www.youtube.com/playlist?list=PLkEZWD8wbltnRp6nRR8kv97RbpcUdNawY) by Petr Tichy, a/k/a [ihatetomatoes](https://ihatetomatoes.net/), for Webpack 2 setup and configuration. This branch through Video 10, for setting up separate dev and prod environments. 
 
 There are some variations to Petr's tutorials. E.g., PostCSS, Sass and Handlebars get pre-compiled using [extract-text-webpack-plugin](https://www.npmjs.com/package/extract-text-webpack-plugin), [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin) and [handlebars-loader](https://github.com/pcardune/handlebars-loader).
 
