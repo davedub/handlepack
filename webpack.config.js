@@ -11,7 +11,9 @@ const extractProd2 = new ExtractTextPlugin('css/app.css');
 const webpack = require('webpack');
 const path = require("path");
 
-const bootstrapEntryPoints = require('./webpack.bootstrap.config');
+const bootstrapEntryPoints = require('./webpack.bootstrap.config.js');
+
+
 
 const cssProd1 = extractProd1.extract({
     fallback: 'style-loader',
@@ -73,6 +75,10 @@ module.exports = {
             { 
             test: /\.(ttf|eot)$/, 
             use: 'file-loader' 
+            },
+            {
+            test: /bootstrap\/dist\/js\/umd\//, 
+            use: 'imports-loader?jQuery=jquery' 
             },
             {
             test: /\.hbs$/, 
