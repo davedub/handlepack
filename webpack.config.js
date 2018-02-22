@@ -11,6 +11,8 @@ const extractProd2 = new ExtractTextPlugin('css/app.css');
 const webpack = require('webpack');
 const path = require("path");
 
+const bootstrapEntryPoints = require('./webpack.bootstrap.config');
+
 const cssProd1 = extractProd1.extract({
     fallback: 'style-loader',
     use: [ 'css-loader', 'postcss-loader' ],
@@ -21,13 +23,17 @@ const cssProd2 = extractProd2.extract({
     use: [ 'css-loader', 'sass-loader' ],
     publicPath: '/dist'
     });
-const cssConfig = isProd ? [cssProd1, cssProd2] : [cssDev1, cssDev2];
+// const cssConfig = isProd ? [cssProd1, cssProd2] : [cssDev1, cssDev2];
+// not needed the way this config works
+
+const bootstrapConfig = isProd ? bootstrapEntryPoints.prod : bootstrapEntryPoints.dev; 
 
 module.exports = {
     entry: {
         app: './src/js/app.js',
+		bootstrap: bootstrapConfig,
         contact: './src/js/contact.js'
-},
+    },
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].bundle.js'
@@ -59,6 +65,14 @@ module.exports = {
                 //'file-loader?name=[hash:12].[ext]&outputPath=images/&publicPath=images/',
                'image-webpack-loader'
                 ]
+            },
+            { 
+            test: /\.(woff2?|svg)$/, 
+            use: 'url-loader?limit=10000' 
+            },
+            { 
+            test: /\.(ttf|eot)$/, 
+            use: 'file-loader' 
             },
             {
             test: /\.hbs$/, 
