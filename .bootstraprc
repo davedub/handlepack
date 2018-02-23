@@ -3,26 +3,29 @@
 # loglevel: debug
 
 # Major version of Bootstrap: 3 or 4
-bootstrapVersion: 3
+bootstrapVersion: 4
 
 # Webpack loaders, order matters
+
 styleLoaders:
-  - style
-  - css
-  - postcss
-  - sass
+  - style-loader
+  - css-loader
+# - sass-loader
+#  - postcss-loader
+# You can apply loader params here:
+  - sass-loader?outputStyle=expanded
 
 # Extract styles to stand-alone css file
 # Different settings for different environments can be used,
 # It depends on value of NODE_ENV environment variable
 # This param can also be set in webpack config:
 #   entry: 'bootstrap-loader/extractStyles'
-extractStyles: false
+extractStyles: true
 # env:
-#   development:
-#     extractStyles: false
-#   production:
+#  development:
 #     extractStyles: true
+#   production:
+#    extractStyles: true
 
 
 # Customize Bootstrap variables that get imported before the original Bootstrap variables.

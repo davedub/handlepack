@@ -13,27 +13,24 @@ const path = require("path");
 
 const bootstrapEntryPoints = require('./webpack.bootstrap.config.js');
 
-
-
 const cssProd1 = extractProd1.extract({
     fallback: 'style-loader',
-    use: [ 'css-loader', 'postcss-loader' ],
+    use: [ 'postcss-loader', 'css-loader' ],
     publicPath: '/dist'
     });
 const cssProd2 = extractProd2.extract({
     fallback: 'style-loader',
-    use: [ 'css-loader', 'sass-loader' ],
+    use: [ 'sass-loader', 'css-loader' ],
     publicPath: '/dist'
     });
-// const cssConfig = isProd ? [cssProd1, cssProd2] : [cssDev1, cssDev2];
-// not needed the way this config works
 
 const bootstrapConfig = isProd ? bootstrapEntryPoints.prod : bootstrapEntryPoints.dev; 
 
 module.exports = {
     entry: {
         app: './src/js/app.js',
-		bootstrap: bootstrapConfig,
+        // entry: 'bootstrap-loader/extractStyles',
+        bootstrap: bootstrapConfig,
         contact: './src/js/contact.js'
     },
     output: {
@@ -42,6 +39,10 @@ module.exports = {
     },
     module: {
         rules: [
+            {
+            test: /bootstrap\/dist\/js\/umd\//, 
+            use: 'imports-loader?jQuery=jquery'
+            },
             {
             test: /\.sss$/,
             use: isProd ? cssProd1 : cssDev1
@@ -75,10 +76,6 @@ module.exports = {
             { 
             test: /\.(ttf|eot)$/, 
             use: 'file-loader' 
-            },
-            {
-            test: /bootstrap\/dist\/js\/umd\//, 
-            use: 'imports-loader?jQuery=jquery' 
             },
             {
             test: /\.hbs$/, 
@@ -130,6 +127,25 @@ module.exports = {
           }),    
         extractProd1,
         extractProd2,
+new webpack.ProvidePlugin({
+    $: "jquery",
+    jQuery: "jquery",
+    "window.jQuery": "jquery",
+    Tether: "tether",
+    "window.Tether": "tether",
+    Popper: ['popper.js', 'default'],
+    Alert: "exports-loader?Alert!bootstrap/js/dist/alert",
+    Button: "exports-loader?Button!bootstrap/js/dist/button",
+    Carousel: "exports-loader?Carousel!bootstrap/js/dist/carousel",
+    Collapse: "exports-loader?Collapse!bootstrap/js/dist/collapse",
+    Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown",
+    Modal: "exports-loader?Modal!bootstrap/js/dist/modal",
+    Popover: "exports-loader?Popover!bootstrap/js/dist/popover",
+    Scrollspy: "exports-loader?Scrollspy!bootstrap/js/dist/scrollspy",
+    Tab: "exports-loader?Tab!bootstrap/js/dist/tab",
+    Tooltip: "exports-loader?Tooltip!bootstrap/js/dist/tooltip",
+    Util: "exports-loader?Util!bootstrap/js/dist/util",
+  }),
         new webpack.NamedModulesPlugin(),
           // prints more readable module names in the browser console on HMR update
         new webpack.HotModuleReplacementPlugin()
