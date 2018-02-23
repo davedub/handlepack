@@ -1,11 +1,8 @@
 const fs = require('fs');
-
 function getBootstraprcCustomLocation() {
   return process.env.BOOTSTRAPRC_LOCATION;
 }
-
 const bootstraprcCustomLocation = getBootstraprcCustomLocation();
-
 let defaultBootstraprcFileExists;
 
 try {

@@ -5,8 +5,8 @@ const isProd = process.env.NODE_ENV === 'production' // true or false
 var cssDev1 = ['style-loader', 'css-loader', 'postcss-loader'];
 var cssDev2 = ['style-loader', 'css-loader', 'sass-loader'];
 
-const extractProd1 = new ExtractTextPlugin('css/styles.css');
-const extractProd2 = new ExtractTextPlugin('css/app.css');
+const extractProd1 = new ExtractTextPlugin('css/[name].css');
+const extractProd2 = new ExtractTextPlugin('css/[name].css');
 
 const webpack = require('webpack');
 const path = require("path");
@@ -15,12 +15,12 @@ const bootstrapEntryPoints = require('./webpack.bootstrap.config.js');
 
 const cssProd1 = extractProd1.extract({
     fallback: 'style-loader',
-    use: [ 'postcss-loader', 'css-loader' ],
+    use: [ 'css-loader' , 'postcss-loader' ],
     publicPath: '/dist'
     });
 const cssProd2 = extractProd2.extract({
     fallback: 'style-loader',
-    use: [ 'sass-loader', 'css-loader' ],
+    use: [ 'css-loader', 'sass-loader' ],
     publicPath: '/dist'
     });
 
@@ -31,7 +31,7 @@ module.exports = {
         app: './src/js/app.js',
         // entry: 'bootstrap-loader/extractStyles',
         bootstrap: bootstrapConfig,
-        contact: './src/js/contact.js'
+         contact: './src/js/contact.js'
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -71,11 +71,11 @@ module.exports = {
             },
             { 
             test: /\.(woff2?|svg)$/, 
-            use: 'url-loader?limit=10000' 
+            use: 'url-loader?limit=10000&name=fonts/[name].[ext]' 
             },
             { 
             test: /\.(ttf|eot)$/, 
-            use: 'file-loader' 
+            use: 'file-loader?name=fonts/[name].[ext]' 
             },
             {
             test: /\.hbs$/, 

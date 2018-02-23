@@ -1,8 +1,9 @@
+@import './../bootstrap/customizations.scss';
+
 body {
     height: 100%;
     min-height: 100%;
-     background: url('./../images/jamesbfaded.jpg') center center no-repeat;
 }
-h1, h2, h3 {
-    color: #a4c8b2;
+div.container {
+	background-color: $body-bg;
 }
