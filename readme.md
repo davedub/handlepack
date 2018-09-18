@@ -6,7 +6,13 @@ There are a few variations to what Petr covers. E.g., PostCSS, Sass and Handleba
 
 The [handlebars](http://handlebarsjs.com) loader for [webpack](https://github.com/webpack/webpack) requires aliasing. Partials are {{> pathTo/partial }}. Helpers are {{ pathTo/helper }}. But there is a ReferenceError in the Javascript console of "cant find variable: hbs". Also see [this issue](https://github.com/pcardune/handlebars-loader/issues/118) on making sure that the knownHelpersOnly property of handlebars-loader, which defaults to true, is set to false.
 
+<<<<<<< HEAD
 ## Installation
+=======
+React and Babel are added. Multi-templating is set up but not routing. 
+
+## Install
+>>>>>>> ad9b055d9ff8cfd927ba2e6a418bfebbea7e8b16
 
 `npm install`
 
@@ -14,7 +20,11 @@ The [handlebars](http://handlebarsjs.com) loader for [webpack](https://github.co
 
 `npm run dev`
 
+<<<<<<< HEAD
 ## Output, don't run
+=======
+## Output
+>>>>>>> ad9b055d9ff8cfd927ba2e6a418bfebbea7e8b16
 
 Webpack dev server (as opposed to the Webpack module itself) serves files out of memory rather than writing them to disk. To see the files as saved to disk by Webpack, change the script for "dev" in package.json to `webpack -d` from `webpack-dev-server`.  Then try running `npm run dev` again. As now configured, the "prod" script does the same thing.
 
