@@ -4,6 +4,6 @@ Tracking [YouTube videos](https://www.youtube.com/playlist?list=PLkEZWD8wbltnRp6
 
 Last lesson reviewed how to output images from CSS and a static or template source file using [file-loader](https://github.com/webpack-contrib/file-loader), and how to optimize images using [image-webpack-loader](https://github.com/tcoopman/image-webpack-loader).
 
-## 2019 update
+## 2020 update
 
-Master branch merged with Bootstrap branch and updated with Webpack 4 but various errors and problems persist. Interesting learning project but no practical use. Do not proceed further with this project.
+Master branch merged with Bootstrap branch and updated with Webpack 4. Earlier errors and problems solved for now. Interesting learning project but no obvious practical practical use. 
