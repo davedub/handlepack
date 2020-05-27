@@ -11,8 +11,9 @@ styleLoaders:
   - style-loader
   - css-loader
 # - postcss-loader
+  - sass-loader
 # You can apply loader params here:
-  - sass-loader?outputStyle=expanded
+# but don't for now
 
 # Extract styles to stand-alone css file
 # Different settings for different environments can be used,

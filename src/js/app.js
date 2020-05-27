@@ -4,8 +4,6 @@ import React from 'react';
 
 import Popper from 'popper.js';
 
-import sss from './../styles/styles.sss';
-
 console.log("Hello from app.js and webpack dev server!!");
 console.log("using hot module replacement");
 console.log(this.loaders);
