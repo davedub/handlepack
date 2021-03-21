@@ -4,4 +4,8 @@ Tracking [YouTube videos](https://www.youtube.com/playlist?list=PLkEZWD8wbltnRp6
 
 ## 2020 update
 
-Master branch merged with Bootstrap branch and updated with Webpack 4. Earlier errors and problems solved for now. Interesting learning project but no obvious practical use. 
+Master branch merged with Bootstrap branch and updated with Webpack 4. Earlier errors and problems solved for now. Interesting learning project but no obvious practical use.
+
+## 2021 update
+
+Archiving and making project read-only as of 21 March 2021.
